@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "reservation_info")
 public class Reservation {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -23,10 +22,6 @@ public class Reservation {
     private Payment payment;
 
     public Reservation() {
-    }
-
-    public Reservation(Integer numberOfHours) {
-        this.numberOfHours = numberOfHours;
     }
 
     public Reservation(Integer numberOfHours, User user, Spot spot) {

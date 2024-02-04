@@ -7,11 +7,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "payment_info")
 public class Payment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private Boolean paymentCompleted;
     @Enumerated(value = EnumType.STRING)
     private PaymentMode paymentMode;

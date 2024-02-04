@@ -7,13 +7,10 @@ import java.util.List;
 @Entity
 @Table(name = "table_info")
 public class ParkingLot {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String name;
-
     private String address;
 
     @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL)
