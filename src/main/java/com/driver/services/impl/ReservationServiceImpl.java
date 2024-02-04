@@ -48,7 +48,7 @@ public class ReservationServiceImpl implements ReservationService {
         int minCost = Integer.MAX_VALUE;
         List<Spot> spotList = parkingLot.getSpotList();
         for (Spot spot : spotList){
-            if(!spot.getOccupied() && spot.getSpotType()==spotType && minCost>timeInHours*spot.getPricePerHour()){
+            if(!spot.getOccupied() && spot.getSpotType().equals(spotType) && minCost>timeInHours*spot.getPricePerHour()){
                 unreservedSpot = spot;
                 minCost=timeInHours*spot.getPricePerHour();
             }
