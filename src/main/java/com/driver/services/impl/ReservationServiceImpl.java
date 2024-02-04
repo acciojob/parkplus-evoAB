@@ -35,35 +35,36 @@ public class ReservationServiceImpl implements ReservationService {
         }catch(Exception e){
             throw new Exception("Cannot make reservation");
         }
-        SpotType spotType = null;
-        if (numberOfWheels<=2)
-            spotType=SpotType.TWO_WHEELER;
-        else if (numberOfWheels<=4) {
-            spotType=SpotType.FOUR_WHEELER;
-        }
-        else
-            spotType=SpotType.OTHERS;
-
-        Spot unreservedSpot=null;
+        Spot reservedSpot = null;
         int minCost = Integer.MAX_VALUE;
-        List<Spot> spotList = parkingLot.getSpotList();
-        for (Spot spot : spotList){
-            if(!spot.getOccupied() && spot.getSpotType().equals(spotType) && minCost>timeInHours*spot.getPricePerHour()){
-                unreservedSpot = spot;
-                minCost=timeInHours*spot.getPricePerHour();
+        for (Spot spot: parkingLot.getSpotList()){
+            int wheels = 0;
+            if(spot.getSpotType() == SpotType.TWO_WHEELER){
+                wheels = 2;
+            } else if (spot.getSpotType() == SpotType.FOUR_WHEELER) {
+                wheels = 4;
+            } else if (spot.getSpotType() == SpotType.OTHERS) {
+                wheels = 24;
+            }
+            if(!spot.getOccupied() && numberOfWheels <=wheels && spot.getPricePerHour()*timeInHours < minCost){
+                minCost = spot.getPricePerHour() * timeInHours;
+                reservedSpot = spot;
             }
         }
-        if(unreservedSpot == null){
+        if(reservedSpot == null){
             throw new Exception("Cannot make reservation");
         }
-        Reservation reservation = new Reservation(timeInHours, user, unreservedSpot);
+        Reservation reservation = new Reservation();
+        reservation.setNumberOfHours(timeInHours);
+        reservation.setUser(user);
+        reservation.setSpot(reservedSpot);
 
         user.getReservationList().add(reservation);
-        unreservedSpot.getReservationList().add(reservation);
-        unreservedSpot.setOccupied(true);
-
+        reservedSpot.getReservationList().add(reservation);
+        reservedSpot.setOccupied(true);
+        //reservation=reservationRepository3.save(reservation);
         userRepository3.save(user);
-        spotRepository3.save(unreservedSpot);
+        spotRepository3.save(reservedSpot);
         return reservation;
     }
 }
