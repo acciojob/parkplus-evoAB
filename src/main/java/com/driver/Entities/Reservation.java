@@ -30,6 +30,22 @@ public class Reservation {
         this.spot = spot;
     }
 
+    public void setNumberOfHours(Integer numberOfHours) {
+        this.numberOfHours = numberOfHours;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
     public Integer getId() {
         return id;
     }

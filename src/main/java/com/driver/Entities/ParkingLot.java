@@ -24,6 +24,18 @@ public class ParkingLot {
         this.address = address;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setSpotList(List<Spot> spotList) {
+        this.spotList = spotList;
+    }
+
     public Integer getId() {
         return id;
     }

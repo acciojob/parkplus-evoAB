@@ -26,4 +26,28 @@ public class Payment {
         this.paymentMode = paymentMode;
         this.reservation = reservation;
     }
+
+    public Boolean getPaymentCompleted() {
+        return paymentCompleted;
+    }
+
+    public void setPaymentCompleted(Boolean paymentCompleted) {
+        this.paymentCompleted = paymentCompleted;
+    }
+
+    public PaymentMode getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(PaymentMode paymentMode) {
+        this.paymentMode = paymentMode;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 }
