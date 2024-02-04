@@ -1,4 +1,6 @@
-package com.driver.Entities;
+package com.driver.model;
+
+import com.driver.model.Reservation;
 
 import javax.persistence.*;
 import java.util.ArrayList;
