@@ -9,8 +9,6 @@ import com.driver.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class PaymentServiceImpl implements PaymentService {
     @Autowired
@@ -20,15 +18,10 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment pay(Integer reservationId, int amountSent, String mode) throws Exception {
-        Optional<Reservation> optionalReservation=reservationRepository2.findById(reservationId);
-        if(optionalReservation.isEmpty())
-        {
-            throw new Exception("Reservation ID invalid");
-        }
-        Reservation reservation=optionalReservation.get();
-        if(amountSent < reservation.getSpot().getPricePerHour() * reservation.getNumberOfHours()){
+        Reservation reservation = reservationRepository2.findById(reservationId).get();
+        if (reservation.getNumberOfHours()*reservation.getSpot().getPricePerHour()>amountSent)
             throw new Exception("Insufficient Amount");
-        }
+
         PaymentMode paymentMode = null;
         if (mode.toUpperCase().equals(PaymentMode.CASH.toString())) paymentMode = PaymentMode.CASH;
         else if (mode.toUpperCase().equals(PaymentMode.CARD.toString())) {
@@ -39,12 +32,10 @@ public class PaymentServiceImpl implements PaymentService {
             throw new Exception("Payment mode not detected");
         }
 
-        Payment payment = new Payment();
-        payment.setPaymentCompleted(true);
-        payment.setPaymentMode(paymentMode);
-        payment.setReservation(reservation);
+        Payment payment = new Payment(true, paymentMode, reservation);
 
+        paymentRepository2.save(payment);
         reservationRepository2.save(reservation);
-        return  payment;
+        return payment;
     }
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "table_info")
 public class ParkingLot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,15 +13,26 @@ public class ParkingLot {
     private String name;
     private String address;
 
-    @OneToMany(mappedBy = "parkingLot",cascade = CascadeType.ALL)
-    private List<Spot> spotList=new ArrayList<>();
+    @OneToMany(mappedBy = "parkingLot", cascade = CascadeType.ALL)
+    private List<Spot> spotList = new ArrayList<>();
 
     public ParkingLot() {
     }
 
-    public ParkingLot(String name, String address, List<Spot> spotList) {
+    public ParkingLot(String name, String address) {
         this.name = name;
         this.address = address;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setSpotList(List<Spot> spotList) {
         this.spotList = spotList;
     }
 
@@ -28,31 +40,15 @@ public class ParkingLot {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public List<Spot> getSpotList() {
         return spotList;
-    }
-
-    public void setSpotList(List<Spot> spotList) {
-        this.spotList = spotList;
     }
 }

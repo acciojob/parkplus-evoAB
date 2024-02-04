@@ -3,11 +3,13 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "reservation_info")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer id;
+    private Integer id;
     private Integer numberOfHours;
+
     @JoinColumn
     @ManyToOne
     private User user;
@@ -22,11 +24,25 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Integer id, Integer numberOfHours, User user, Spot spot, Payment payment) {
-        this.id = id;
+    public Reservation(Integer numberOfHours, User user, Spot spot) {
         this.numberOfHours = numberOfHours;
         this.user = user;
         this.spot = spot;
+    }
+
+    public void setNumberOfHours(Integer numberOfHours) {
+        this.numberOfHours = numberOfHours;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
+
+    public void setPayment(Payment payment) {
         this.payment = payment;
     }
 
@@ -34,39 +50,19 @@ public class Reservation {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Integer getNumberOfHours() {
         return numberOfHours;
-    }
-
-    public void setNumberOfHours(Integer numberOfHours) {
-        this.numberOfHours = numberOfHours;
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public Spot getSpot() {
         return spot;
     }
 
-    public void setSpot(Spot spot) {
-        this.spot = spot;
-    }
-
     public Payment getPayment() {
         return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
     }
 }
