@@ -23,6 +23,9 @@ public class Payment {
         this.paymentMode = paymentMode;
         this.reservation = reservation;
     }
+    public boolean isPaymentCompleted() {
+        return paymentCompleted;
+    }
 
     public Integer getId() {
         return id;
