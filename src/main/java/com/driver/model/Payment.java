@@ -3,7 +3,6 @@ package com.driver.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "payment_info")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

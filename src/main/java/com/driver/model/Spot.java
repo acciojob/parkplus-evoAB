@@ -1,15 +1,10 @@
 package com.driver.model;
 
-import com.driver.model.ParkingLot;
-import com.driver.model.Reservation;
-import com.driver.model.SpotType;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "spot_info")
 public class Spot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

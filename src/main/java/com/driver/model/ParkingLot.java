@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "table_info")
 public class ParkingLot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

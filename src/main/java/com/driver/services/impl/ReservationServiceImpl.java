@@ -36,9 +36,9 @@ public class ReservationServiceImpl implements ReservationService {
             throw new Exception("Cannot make reservation");
         }
         SpotType spotType = null;
-        if (numberOfWheels==2)
+        if (numberOfWheels<=2)
             spotType=SpotType.TWO_WHEELER;
-        else if (numberOfWheels==4) {
+        else if (numberOfWheels<=4) {
             spotType=SpotType.FOUR_WHEELER;
         }
         else
