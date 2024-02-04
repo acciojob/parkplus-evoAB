@@ -53,6 +53,14 @@ public class User {
         return phoneNumber;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
+
     public String getPassword() {
         return password;
     }

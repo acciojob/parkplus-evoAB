@@ -43,6 +43,14 @@ public class Spot {
         this.spotType = spotType;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
+
     public void setPricePerHour(Integer pricePerHour) {
         this.pricePerHour = pricePerHour;
     }

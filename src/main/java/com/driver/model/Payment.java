@@ -25,6 +25,14 @@ public class Payment {
         this.reservation = reservation;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Boolean getPaymentCompleted() {
         return paymentCompleted;
     }

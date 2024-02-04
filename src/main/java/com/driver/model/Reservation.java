@@ -50,6 +50,10 @@ public class Reservation {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getNumberOfHours() {
         return numberOfHours;
     }
